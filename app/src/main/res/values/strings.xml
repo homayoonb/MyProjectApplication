@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MyProjectApplication</string>
+    <string name="search">Search</string>
+    <string name="please_enter_movie">Please Enter Movie</string>
+    <string name="enter_title_movie">Enter Title Movie</string>
+</resources>

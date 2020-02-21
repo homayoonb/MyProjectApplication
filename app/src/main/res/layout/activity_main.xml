@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <EditText
+        android:id="@+id/EditTextTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:hint="@string/enter_title_movie"
+        android:textSize="30sp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:gravity="center"
+        />
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:padding="25dp"
+        android:text="@string/search"
+        android:textSize="30sp" />
+</LinearLayout>
