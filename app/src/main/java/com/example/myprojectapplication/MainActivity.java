@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,9 +21,15 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,JsonToRecyclerActivity.class);
-                intent.putExtra("Title",editText.getText().toString());
-                startActivity(intent);
+                if (editText.getText().equals(' '))
+                {
+                    Toast.makeText(getApplicationContext(),"please Enter title movie",Toast.LENGTH_LONG).show();
+                    editText.setFocusable(true);
+                }else {
+                    Intent intent = new Intent(MainActivity.this, JsonToRecyclerActivity.class);
+                    intent.putExtra("Title", editText.getText().toString());
+                    startActivity(intent);
+                }
             }
         });
     }

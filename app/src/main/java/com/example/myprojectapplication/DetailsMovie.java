@@ -6,6 +6,7 @@ import cz.msebera.android.httpclient.Header;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -50,6 +51,13 @@ public class DetailsMovie extends AppCompatActivity {
                 ImageView imageView=findViewById(R.id.imgPoster);
                 String poster = movieProperties.getPoster();
                 Picasso.get().load(poster).into(imageView);
+                Button btnsavetodatabase=findViewById(R.id.btnsavetodatabase);
+                btnsavetodatabase.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
             }
 
             @Override

@@ -16,9 +16,11 @@
         android:layout_marginStart="16dp"
         android:hint="@string/enter_title_movie"
         android:textSize="30sp"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@color/black"
         android:gravity="center"
-        />
+        android:importantForAutofill="no"
+        android:inputType="text"
+        tools:ignore="TextFields" />
     <Button
         android:id="@+id/btnSearch"
         android:layout_width="match_parent"
@@ -29,5 +31,7 @@
         android:layout_marginEnd="16dp"
         android:padding="25dp"
         android:text="@string/search"
+        android:background="@drawable/button_search"
+        android:textColor="@color/black"
         android:textSize="30sp" />
 </LinearLayout>

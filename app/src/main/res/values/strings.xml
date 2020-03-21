@@ -3,4 +3,6 @@
     <string name="search">Search</string>
     <string name="please_enter_movie">Please Enter Movie</string>
     <string name="enter_title_movie">Enter Title Movie</string>
+    <string name="save_to_database">save to database</string>
+    <string name="todo">TODO</string>
 </resources>
