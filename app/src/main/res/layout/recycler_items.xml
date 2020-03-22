@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/page_color"
+    >
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -17,6 +19,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center"
+
             >
         <TextView
             android:id="@+id/txtTitle"

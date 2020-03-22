@@ -5,4 +5,12 @@
     <string name="enter_title_movie">Enter Title Movie</string>
     <string name="save_to_database">save to database</string>
     <string name="todo">TODO</string>
+    <string name="show_movie">Show Movie</string>
+    <string name="year">Year</string>
+    <string name="title">Title</string>
+    <string name="director">Director</string>
+    <string name="genre">Genre</string>
+    <string name="country">Country</string>
+    <string name="language">Language</string>
+    <string name="actors">Actors</string>
 </resources>

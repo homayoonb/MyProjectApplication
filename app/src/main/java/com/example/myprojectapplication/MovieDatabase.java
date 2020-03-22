@@ -1,12 +1,22 @@
 package com.example.myprojectapplication;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
+
+import com.example.myprojectapplication.imdbProp.MovieProperties;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MovieDatabase extends SQLiteOpenHelper {
-    String TableName="movieProperties";
+    private static final String TAG = "MovieDatabase";
+    String TableName="tblMovie";
 
     public MovieDatabase(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -14,7 +24,7 @@ public class MovieDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String create_Table_movie="create table "+TableName+"(id integer primary key autoincrement,title text,year text,rated text,released text,runtime text,genre text,director text,writer text,actors text,plot text,language text,country text,awards text,metascore text,imdbRating text,imdbVotes text,imdbID text,type text,dVD text,boxOffice text,production text,website text,response text)";
+        String create_Table_movie="create table "+TableName+"(id integer primary key autoincrement,title text,year text,poster text,director text,actors text,genre text,country text,language text)";
         db.execSQL(create_Table_movie);
     }
 
@@ -22,9 +32,34 @@ public class MovieDatabase extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-    public void insert(String title,String year,String rated,String released,String runtime,String genre,String director,String writer,String actors,String plot,String language,String country,String awards,String poster,String metascore,String imdbRating,String imdbVotes,String imdbID,String type,String dVD,String boxOffice,String production,String website){
-        String insert_data="insert into "+TableName+"(title,year,rated,released,runtime,genre,director,writer,actors,plot,language,country,awards,poster,metascore,imdbRating,imdbVotes,imdbID,type,dVD,boxOffice,production,website) values(' "+title+" ' , ' "+year+" ',' "+rated+" ',' "+released+" ' , ' "+runtime+" ' , ' "+genre+" ' , ' "+director+" ' , ' "+writer+" ' , ' "+actors+" ' , ' "+plot+" ' , ' "+language+" ' , ' "+country+" ' , ' "+awards+" ' , ' "+poster+" ' , ' "+metascore+" ' , ' "+imdbRating+" ' , ' "+imdbVotes+" ' , ' "+imdbID+" ' , ' "+type+" ' , ' "+dVD+" ' , ' "+boxOffice+" ' , ' "+production+" ' , ' "+website+" ' )";
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        sqLiteDatabase.execSQL(insert_data);
+
+    public void insert(String title, String year, String poster,String director, String actors, String genre, String country, String language){
+        try {
+            String insert_data="insert into "+TableName+"(title,year,poster,director,actors,genre,country,language) values('"+title+"','"+year+"','"+poster+"','"+director+"','"+actors+"','"+genre+"','"+country+"','"+language+"')";
+            SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+            sqLiteDatabase.execSQL(insert_data);
+        }catch (SQLiteException e){
+            Log.d(TAG, "insert : "+e.getMessage());
+        }
+
+    }
+    public List<MovieProperties> getMovieProperties(){
+        List<MovieProperties> moviePropertiesList=new ArrayList<>();
+        String select_all="select title,year,poster,director,actors,genre,country,language from "+TableName;
+        SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(select_all, null);
+        while (cursor.moveToNext()){
+            MovieProperties movieProperties=new MovieProperties();
+            movieProperties.setTitle(cursor.getString(0));
+            movieProperties.setYear(cursor.getString(1));
+            movieProperties.setPoster(cursor.getString(2));
+            movieProperties.setDirector(cursor.getString(3));
+            movieProperties.setActors(cursor.getString(4));
+            movieProperties.setGenre(cursor.getString(5));
+            movieProperties.setCountry(cursor.getString(6));
+            movieProperties.setLanguage(cursor.getString(7));
+            moviePropertiesList.add(movieProperties);
+        }
+        return moviePropertiesList;
     }
 }

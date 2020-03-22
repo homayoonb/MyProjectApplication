@@ -21,15 +21,23 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (editText.getText().equals(' '))
+                if (!(editText.getText().equals(null)))
                 {
-                    Toast.makeText(getApplicationContext(),"please Enter title movie",Toast.LENGTH_LONG).show();
-                    editText.setFocusable(true);
-                }else {
                     Intent intent = new Intent(MainActivity.this, JsonToRecyclerActivity.class);
                     intent.putExtra("Title", editText.getText().toString());
                     startActivity(intent);
+                }else {
+                    Toast.makeText(MainActivity.this, "Please Enter title", Toast.LENGTH_SHORT).show();
+                    editText.setFocusable(true);
                 }
+            }
+        });
+        Button btnShowMovie=findViewById(R.id.btnShowMovie);
+        btnShowMovie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,ShowMovieLocal.class);
+                startActivity(intent);
             }
         });
     }
